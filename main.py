@@ -422,7 +422,7 @@ def scrape_data(brands, start_page, end_page):      # Configure Edge options
     os.makedirs(output_dir, exist_ok=True)
     
     # Save the Excel file
-    output_file = os.path.join(output_dir, "scraped_data.csv")
+    output_file = os.path.join(output_dir, "scraped_data.xlsx")
     df.to_excel(output_file, index=False, engine='openpyxl')
     
     print(f"Scraped data saved to {output_file}")
