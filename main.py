@@ -36,8 +36,16 @@ HEADERS = {
 def get_driver():
     options = webdriver.EdgeOptions()
     options.add_argument("--start-maximized")  # Open maximized for visibility
+    options.add_argument("--user-data-dir=" + os.path.join(os.getcwd(), "selenium_edge_profile"))  # Unique user data directory
+    options.add_argument("--disable-gpu")  # Disable GPU rendering
+    options.add_argument("--disable-extensions")  # Avoid extension conflicts
+    options.add_argument("--disable-background-timer-throttling")  # Prevent background tab issues
+    options.add_argument("--disable-backgrounding-occluded-windows")  # Avoid freezing of inactive windows
+    options.add_argument("--disable-renderer-backgrounding")  # Prevent performance slowdowns
+
     driver = webdriver.Edge(options=options)
     return driver
+
 
 def get_lat_long_from_google_maps(driver, address):
     """Fetch latitude and longitude for a given address using Google Maps."""
