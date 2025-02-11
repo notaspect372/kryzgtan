@@ -10,6 +10,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.edge.service import Service
 from bs4 import BeautifulSoup
 import requests
+from selenium.webdriver.edge.service import Service
+
 
 # Create output directory if it doesn't exist
 OUTPUT_DIR = "output"
