@@ -35,15 +35,15 @@ HEADERS = {
 # Initialize Edge browser (headless off)
 def get_driver():
     options = webdriver.EdgeOptions()
-    options.add_argument("--start-maximized")  # Open maximized for visibility
-    options.add_argument("--user-data-dir=" + os.path.join(os.getcwd(), "selenium_edge_profile"))  # Unique user data directory
-    options.add_argument("--disable-gpu")  # Disable GPU rendering
-    options.add_argument("--disable-extensions")  # Avoid extension conflicts
-    options.add_argument("--disable-background-timer-throttling")  # Prevent background tab issues
-    options.add_argument("--disable-backgrounding-occluded-windows")  # Avoid freezing of inactive windows
-    options.add_argument("--disable-renderer-backgrounding")  # Prevent performance slowdowns
+    options.add_argument("--headless=new")  # Run in headless mode
+    options.add_argument("--disable-gpu")  
+    options.add_argument("--no-sandbox")  
+    options.add_argument("--disable-dev-shm-usage")  
 
-    driver = webdriver.Edge(options=options)
+    # Use the system's default EdgeDriver path in GitHub Actions
+    service = Service("/usr/bin/msedgedriver")
+
+    driver = webdriver.Edge(service=service, options=options)
     return driver
 
 
